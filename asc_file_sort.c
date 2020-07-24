@@ -9,7 +9,7 @@ t_file_list     *asc_file_sort(t_file_list *files)
     curr = files;
     while(curr && curr->next)
     {
-        if (strcmp(curr->file, curr->next->file) > 0)
+        if (ft_strcmp(curr->file, curr->next->file) > 0)
         {
             temp = curr->next->file;
             curr->next->file = curr->file;

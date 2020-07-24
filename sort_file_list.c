@@ -5,9 +5,9 @@ t_file_list     *sort_file_list(t_file_list *files, char *flags, int main)
     if (ft_strchr(flags, 't'))
     {
         if(main == 1)
-            return (mtime_file_sort(files));
+            return (rtime_file_sort(files));
         else
-            return (atime_file_sort(files));
+            return (time_file_sort(files));
     }else if(ft_strchr(flags, 'S'))
     {
         if(main == 1)

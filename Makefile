@@ -25,14 +25,14 @@ CFLAGS = -Wall -Wextra -Werror
 SRC = 	collect_files.c print_error.c get_flags.c free_file_list.c\
 		sort_file_list.c strcmp.c start_print.c print_pad.c collect_info.c\
 		long_print.c print_folders.c free_info.c desc_file_sort.c asc_file_sort.c\
-		atime_file_sort.c size_file_sort.c valid_flags.c dir_files.c getMaxLen.c\
-		start_f_print.c printTotal.c print_r_files.c\
+		f_time_sort.c size_file_sort.c valid_flags.c dir_files.c getMaxLen.c\
+		start_f_print.c printTotal.c print_r_files.c m_size_sort.c\
 
 OBJ = 	collect_files.o print_error.o get_flags.o free_file_list.o\
 		sort_file_list.o strcmp.o start_print.o print_pad.o collect_info.o\
 		long_print.o print_folders.o free_info.o desc_file_sort.o asc_file_sort.o\
-		atime_file_sort.o size_file_sort.o valid_flags.o dir_files.o getMaxLen.o\
-		start_f_print.o printTotal.o print_r_files.o\
+		f_time_sort.o size_file_sort.o valid_flags.o dir_files.o getMaxLen.o\
+		start_f_print.o printTotal.o print_r_files.o m_size_sort.o\
 
 
 all : $(NAME)
