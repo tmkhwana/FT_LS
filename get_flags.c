@@ -21,6 +21,19 @@ void			get_flags(char **line, char **av, int i, int g)
 			}
 			free(tmp);
 		}
+		else 
+		{
+			if (!(opendir(av[i])))
+			{
+				if (errno == 13)
+				{
+					ft_putstr("ls: ");
+					ft_putstr(av[i]);
+					ft_putendl(": Permission denied");
+					exit(0);
+				}
+			}
+		}
 	}
 	l_str[g] = 0;
 	*line = ft_strdup(l_str);

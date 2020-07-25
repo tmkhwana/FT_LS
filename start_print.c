@@ -20,5 +20,6 @@ void        start_print(t_file_list *files, char *flags)
         }
         temp = temp->next;
     }
+    //ft_putendl("something");
     print_folders(files, flags, file);
 }
