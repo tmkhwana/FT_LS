@@ -21,11 +21,17 @@ t_file_list         *dir_files(char *path, char *fpath, struct stat sb, char *fl
     t_file_list     *curr;
     
     file = (t_file_list *)malloc(sizeof(t_file_list));
+    file->next = NULL;
     dir_inf = opendir(path);
     curr = file;
     while((dir = readdir(dir_inf)) != NULL)
         if (!ft_strchr(flags, 'a') && dir->d_name[0] == '.')
             continue;
+        else if (access( dir->d_name, F_OK ) != -1)
+        {
+            ft_putstr(dir->d_name);
+            ft_putendl("test:ls: test: Permission denied");
+        }
         else
         {
             full_path = ft_strjoin(fpath, dir->d_name);
@@ -35,7 +41,7 @@ t_file_list         *dir_files(char *path, char *fpath, struct stat sb, char *fl
                 print_error(dir->d_name);
         }
     free(dir_inf);
-    curr = file->next;
+    curr = (file->next) ? file->next : NULL;
     free(file);
     return (curr);
 }
