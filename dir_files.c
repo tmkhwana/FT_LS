@@ -25,17 +25,12 @@ t_file_list         *dir_files(char *path, char *fpath, struct stat sb, char *fl
     dir_inf = opendir(path);
     curr = file;
     while((dir = readdir(dir_inf)) != NULL)
-        if (!ft_strchr(flags, 'a') && dir->d_name[0] == '.')
+        if (access( dir->d_name, R_OK ) != -1 && !ft_strchr(flags, 'a') && dir->d_name[0] == '.')
             continue;
-        else if (access( dir->d_name, F_OK ) != -1)
-        {
-            ft_putstr(dir->d_name);
-            ft_putendl("test:ls: test: Permission denied");
-        }
         else
         {
             full_path = ft_strjoin(fpath, dir->d_name);
-            if (lstat(full_path, &sb) != -1)
+            if (lstat(full_path, &sb) != -1 && access(full_path, R_OK ) != -1)
                 curr = createNext(dir->d_name, full_path, curr);
             else
                 print_error(dir->d_name);

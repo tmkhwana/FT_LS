@@ -8,7 +8,8 @@ int             no_dir(char **av)
     i = 0;
     while (av[++i])
     {
-        if (av[i][0] != '-' && lstat(av[i], &sb) == -1)
+        if ((av[i][0] != '-' && lstat(av[i], &sb) == -1) || 
+            (av[i][0] != '-' && access( av[i], R_OK ) == -1))
             return (0);
     }
     return (1);
@@ -22,7 +23,7 @@ t_file_list    *collect_files(char **av, int i, t_file_list *head, struct stat *
     curr = head;
     while (i-- > 1)
     {
-        if (lstat(av[i], sb) != -1)
+        if (lstat(av[i], sb) != -1 && access( av[i], R_OK ) != -1)
         {
             curr->next = (t_file_list*)malloc(sizeof(t_file_list));
             curr->next->file = ft_strdup(av[i]);
